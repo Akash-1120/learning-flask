@@ -1,0 +1,5 @@
+login page
+session store
+accept username and pass
+redirect welcome page
+logout
