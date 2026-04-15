@@ -1,6 +1,6 @@
-from flask import blueprints, render_template, request,redirect,url_for,flash , session
+from flask import Blueprint, render_template, request,redirect,url_for,flash , session
 
-auth_bp = blueprints('auth',__name__)
+auth_bp = Blueprint('auth',__name__)
 
 USER_CREDENTIALS = {
     'username':'admin',
@@ -15,7 +15,8 @@ def login():
 
         if username == USER_CREDENTIALS["username"] and password == USER_CREDENTIALS["password"]:
             session["user"] = username
-            flash("Login Successful","seccess")
+            flash("Login Successful","success")
+            return redirect(url_for("tasks.view_tasks"))
         else:
             flash("Invalid username or password ", "danger")
     return render_template("login.html")

@@ -1,8 +1,8 @@
-from flask import blueprints , render_template, request, redirect, url_for, session, flash
+from flask import Blueprint , render_template, request, redirect, url_for, session, flash
 from app import db
 from app.models import Task
 
-tasks_bp = blueprints("tasks", __name__)
+tasks_bp = Blueprint("tasks", __name__)
 
 @tasks_bp.route("/")
 def view_tasks():
@@ -26,16 +26,16 @@ def add_task():
 
     return redirect(url_for("tasks.view_tasks"))
 
-@tasks_bp.route("/toggle/<int:task_id",methods = ["POST"])
+@tasks_bp.route("/toggle/<int:task_id>",methods = ["POST"])
 def toggle_status(task_id):
     task = Task.query.get(task_id)
     if task:
         if task.status =="Pending":
-            task.status =="Working"
+            task.status ="Working"
         elif task.status =="Working":
-            task.status == "Done"
+            task.status = "Done"
         else:
-            task.status =="Pending"
+            task.status ="Pending"
         db.session.commit()
 
     return redirect(url_for("tasks.view_tasks"))
