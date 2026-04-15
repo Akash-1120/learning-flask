@@ -47,3 +47,15 @@ def clear_tasks():
     flash("All tasks cleared", "info")
     return redirect(url_for("tasks.view_tasks"))
 
+@tasks_bp.route("/delete/<int:task_id>", methods=["POST"])
+def delete_task(task_id):
+    if "user" not in session:
+        return redirect(url_for("auth.login"))
+
+    task = Task.query.get(task_id)
+    if task:
+        db.session.delete(task)
+        db.session.commit()
+        flash("Task deleted successfully", "danger")
+
+    return redirect(url_for("tasks.view_tasks"))

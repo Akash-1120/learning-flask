@@ -176,3 +176,16 @@ footer {
     margin-top: 30px;
     color: #666;
 }
+
+.btn-delete {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    background: #a71d2a;
+}
