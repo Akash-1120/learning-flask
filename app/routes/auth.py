@@ -13,6 +13,8 @@ def login():
         username = request.form.get("username")
         password = request.form.get("password")
 
+        
+
         if username == USER_CREDENTIALS["username"] and password == USER_CREDENTIALS["password"]:
             session["user"] = username
             flash("Login Successful","success")
